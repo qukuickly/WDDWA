@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Anshu Bhai - Cricket Tips</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+    body{
+      background-image: url("https://wallpaperaccess.com/full/3819073.jpg");
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      color: #fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
+    .card{
+      width:100%;
+      max-width:420px;
+      background: rgba(0,0,0,0.72);
+      border-radius:28px;
+      padding:32px;
+      text-align:center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 20px rgba(255,200,0,0.06);
+      backdrop-filter: blur(6px);
+      transform: translateY(0);
+    }
+    .dp{
+      width:128px;
+      height:128px;
+      border-radius:50%;
+      object-fit:cover;
+      border:4px solid #d4af37;
+      margin:0 auto 14px;
+      display:block;
+    }
+    h1{
+      font-size:26px;
+      color:#ffd66b;
+      margin-bottom:6px;
+      font-weight:800;
+      letter-spacing:0.4px;
+    }
+    p.lead{
+      color:#eee;
+      margin-bottom:14px;
+      font-size:15px;
+    }
+    .countdown{
+      font-weight:700;
+      font-size:20px;
+      color:#ffd700;
+      margin-bottom:16px;
+    }
+    .btn{
+      display:inline-block;
+      text-decoration:none;
+      padding:12px 28px;
+      border-radius:999px;
+      background: linear-gradient(90deg,#ffd66b,#ffb500);
+      color:#111;
+      font-weight:700;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    }
+    footer{
+      margin-top:18px;
+      font-size:12px;
+      color:rgba(255,255,255,0.72);
+    }
+
+    /* small curved accent */
+    .curve{
+      width:140px;
+      height:24px;
+      background: linear-gradient(90deg,#ffd66b00,#ffd66b22);
+      margin:8px auto 18px;
+      border-radius: 0 0 70px 70px;
+      opacity:0.9;
+    }
+
+    @media(max-width:420px){
+      .card{padding:22px;border-radius:20px;}
+      .dp{width:108px;height:108px}
+      h1{font-size:22px}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" role="main" aria-label="Anshu Bhai Cricket Tips Landing">
+    <img class="dp"
+         src="https://d1yei2z3i6k35z.cloudfront.net/13184094/6910b9d2bfc51_bcd661a6-96a4-41cd-b81f-d791653d829e.jpeg"
+         alt="Anshu Bhai DP">
+    <div class="curve" aria-hidden="true"></div>
+
+    <h1>Anshu Bhai</h1>
+    <p class="lead">🔥 Premium Cricket Tips & Winning Insights 🔥</p>
+
+    <div id="countdown" class="countdown">Redirecting in 30s...</div>
+
+    <a id="joinBtn" class="btn" href="https://t.me/quickly" target="_blank" rel="noopener noreferrer">Join Telegram Channel</a>
+
+    <footer>© <span id="year"></span> Anshu Bhai — Cricket Tips</footer>
+  </div>
+
+  <script>
+    // Safe defaults & guards
+    (function(){
+      const startSeconds = 30;
+      let timeLeft = Number(startSeconds) || 30;
+      const countdownEl = document.getElementById('countdown');
+      const joinBtn = document.getElementById('joinBtn');
+      const redirectURL = joinBtn ? joinBtn.href : 'https://t.me/quickly';
+
+      // update year in footer
+      const yEl = document.getElementById('year');
+      if(yEl) yEl.textContent = new Date().getFullYear();
+
+      // initial render
+      if(countdownEl) countdownEl.textContent = `Redirecting in ${timeLeft}s...`;
+
+      const tick = () => {
+        timeLeft--;
+        if(countdownEl) countdownEl.textContent = `Redirecting in ${timeLeft}s...`;
+        if(timeLeft <= 0){
+          clearInterval(timer);
+          // try open in new tab safely, fallback to location.href
+          try{
+            window.open(redirectURL, '_blank', 'noopener');
+            // if window.open blocked, fallback:
+            window.location.href = redirectURL;
+          } catch(e){
+            window.location.href = redirectURL;
+          }
+        }
+      };
+
+      const timer = setInterval(tick, 1000);
+    })();
+  </script>
+
+</body>
+</html>
